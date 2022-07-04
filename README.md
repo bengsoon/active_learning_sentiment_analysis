@@ -1,0 +1,5 @@
+# Active Learning / Human-In-The-Loop Sentiment Analysis
+
+The well-known and cliche IMDB dataset contains 50k reviews labeled with binary sentiment classification (`positive` or `negative`). It is usually used to train sentiment analysis for Natural Language Processing. However, in reality, we do not have the luxury of labeled data that is made available to us and the labeling process is a costly and tedious process. Active learning or sometimes known as "human-in-the-loop" learning are one of the tools that can effectively alleviate the costly process of data labeling. 
+
+As such, we will take the existing IMDB data and simulate an active learning environment.  In our case, we will only have a limited set of initial labeled data to initiate the model development. At the same time, we will also have a pool of unlabeled data, which we will use in our active learning process.  
