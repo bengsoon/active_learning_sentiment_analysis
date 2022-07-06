@@ -7,14 +7,17 @@ ARG userid
 ARG username
 
 ARG home=home/${username}
-ARG workdir=${home}/mlflow
+# ARG workdir=${home}
 
 
-WORKDIR ${workdir}
+WORKDIR /home/mlflow
 
 COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy
+ENV BACKEND_URI sqlite:////home/mlflow/mlflow.db
+ENV ARTIFACT_ROOT /home/mlflow/mlruns
 
 EXPOSE 5000
-ENTRYPOINT ["mlflow", "server", "--backend-store-uri", "sqlite:///imdb_tracking.db" "--default-artifact-root", ${home}/mlruns]
+
+CMD mlflow server --backend-store-uri ${BACKEND_URI} --default-artifact-root ${ARTIFACT_ROOT} --host 0.0.0.0 --port 5000
