@@ -1,0 +1,20 @@
+version: "3"
+services:
+  mlflow:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        - username=mlflow
+        - userid=1000
+    container_name: mlflow
+    image: mlflow:latest
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/home/mlflow
