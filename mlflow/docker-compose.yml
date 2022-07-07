@@ -4,9 +4,6 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-      args:
-        - username=mlflow
-        - userid=1000
     container_name: mlflow
     image: mlflow:latest
     restart: unless-stopped
@@ -17,4 +14,4 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./:/home/mlflow
+      - ./:/mlflow
